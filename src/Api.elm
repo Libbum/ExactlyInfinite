@@ -27,9 +27,6 @@ getCaptcha session =
         { method = "GET"
         , headers = buildHeaders session
         , url = "https://www.exactlyinfinite.com/notify/captcha"
-
-        --, url = "https://www.neophilus.net/notify/captcha"
-        --, url = "http://127.0.0.1:7361/captcha"
         , body = Http.emptyBody
         , expect = expectCaptcha GotCaptchaImage
         , timeout = Nothing
@@ -48,9 +45,6 @@ sendContactRequestHelper contact_block headers =
         { method = "POST"
         , headers = headers
         , url = "https://www.exactlyinfinite.com/notify/contact"
-
-        --, url = "https://www.neophilus.net/notify/contact"
-        --, url = "http://127.0.0.1:7361/contact"
         , body = Http.jsonBody contact_block
         , expect = expectContactConfirm ConfirmSendContact
         , timeout = Nothing
