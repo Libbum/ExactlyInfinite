@@ -1,0 +1,6 @@
+# Elm
+elm-stuff
+
+# Files that can be build
+dist/style/notifier.css
+dist/js/*.js
