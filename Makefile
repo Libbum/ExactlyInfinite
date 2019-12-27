@@ -33,9 +33,11 @@ debugindex: dist/contact.html
 
 prodcss: src/notifier.css
 > crass src/notifier.css --optimize > dist/style/notifier.css
+> crass src/front.css --optimize > dist/style/front.css
 
 debugcss: src/notifier.css
 > cp src/notifier.css dist/style/notifier.css
+> cp src/front.css dist/style/front.css
 
 build: dist/js/main.min.js prodindex prodcss dist/js/init.js
 > @-rm -f dist/js/main.js
