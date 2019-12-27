@@ -1,0 +1,103 @@
+body { 
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    padding: 0px 0px;
+    text-align: center;
+    display: block;
+}
+
+nav {
+    position: relative;
+    height: 110px;
+    float: left;
+    margin-left: 25%;
+    width:50%;
+}
+
+a {
+    text-decoration: none;
+}
+a:hover {
+    cursor: pointer;
+}
+
+a.desc { display: none; }
+
+a.right { float: right; }
+
+img {
+    position:absolute;
+    left:50%;
+    transition: opacity 1s ease-in-out;
+    border: 0px;
+}
+
+
+img.top:hover {
+    opacity:0;
+}
+
+#okta {
+    position: relative;
+    width:33%;
+    float:left;
+    text-align:left;
+    height:70px;
+    width:33%;
+}
+
+#okta a:hover .desc{
+    display: block;
+    font-size: 1.2em;
+    color: #ccc;
+    position: absolute;
+    bottom: -30px;
+    margin-left: 50%;
+    width: 71px;
+    border-top: 1px solid #999;
+    text-align:center;
+}
+
+#contact{
+    position: relative;
+    height:70px;
+    width:33%;
+    float:left;
+    text-align:right;
+}
+
+
+#contact a:hover .desc{
+    display: block;
+    font-size: 1.2em;
+    color: #ccc;
+    position: absolute;
+    bottom: -30px;
+    margin-left: 50%;
+    width: 77px;
+    border-top: 1px solid #999;
+    text-align:center;
+}
+
+#yuri{
+    position: relative;
+    height:70px;
+    width:34%;
+    float:left;
+text-align:center;}
+
+#yuri a:hover .desc{
+    display: block;
+    font-size: 1.2em;
+    color: #ccc;
+    position: absolute;
+    bottom: -30px;
+    margin-left: 50%;
+    width: 87px;
+    border-top: 1px solid #999;
+    text-align:center;
+}
