@@ -52,18 +52,21 @@ update msg model =
 
         GotCaptchaImage (Err err) ->
             let
-                response =
+                ( response, formEnabled ) =
                     case err of
                         Http.NetworkError ->
-                            "Contact system is currently offline. Please try again later."
+                            ( "Contact system is currently offline. Please try again later.", False )
 
                         Http.BadStatus 500 ->
-                            "Cannot generate a captcha image. Please try again later."
+                            ( "Cannot generate a captcha image. Please try again later.", False )
+
+                        Http.BadStatus 503 ->
+                            ( "Please refresh a little slower, we have limited your requests.", True )
 
                         _ ->
-                            "Something is currently wong with the contact system. The administrator has been notified. Please try again later."
+                            ( "Something is currently wong with the contact system. The administrator has been notified. Please try again later.", False )
             in
-            ( { model | response = Bad response, formEnabled = False }
+            ( { model | response = Bad response, formEnabled = formEnabled }
             , Cmd.none
             )
 
