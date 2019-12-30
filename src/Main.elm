@@ -46,7 +46,7 @@ update msg model =
             )
 
         GotCaptchaImage (Ok ( image, session )) ->
-            ( { model | captcha = image, session = session }
+            ( { model | captcha = image, session = session, response = NotSent }
             , Cmd.none
             )
 
