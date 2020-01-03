@@ -46,7 +46,21 @@ update msg model =
             )
 
         GotCaptchaImage (Ok ( image, session )) ->
-            ( { model | captcha = image, session = session, response = NotSent }
+            let
+                newResponse =
+                    case model.response of
+                        Bad value ->
+                            -- We don't want to clear out an invalid session error too soon.
+                            if String.left 20 value == "Your session expired" then
+                                model.response
+
+                            else
+                                NotSent
+
+                        _ ->
+                            NotSent
+            in
+            ( { model | captcha = image, session = session, response = newResponse }
             , Cmd.none
             )
 
@@ -76,7 +90,7 @@ update msg model =
             )
 
         ConfirmSendContact (Ok _) ->
-            ( { model | response = Good "Your message has been recieved! We'll get back to you as soon as we can.", name = "", email = "", message = "", challenge = "", formEnabled = False }, Api.getCaptcha Nothing )
+            ( { model | response = Good "Your message has been recieved! We'll get back to you as soon as we can.", name = "", email = "", message = "", challenge = "", formEnabled = False }, Cmd.none )
 
         ConfirmSendContact (Err err) ->
             let
